@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "status": "public_safe_snapshot",
+  "public_view": true,
+  "title": "一级市场资本情报系统",
+  "updated_at": "2026-08-12T20:00:25.560189+08:00",
+  "purpose": "公开市场状态识别、一级市场映射与人工复核工作流",
+  "not_a_trading_model": true,
+  "market_state": {
+    "as_of": "2026-08-10",
+    "regime": "收缩",
+    "signals": [
+      {
+        "id": "if_risk_appetite_20d",
+        "name": "风险偏好",
+        "pillar": "risk_appetite",
+        "value": 0.267013,
+        "display_value": "0.27",
+        "percentile": 0.3317,
+        "direction": "上升",
+        "confidence": "低",
+        "sample_size": 202,
+        "lookback": "20日/历史扩展分位",
+        "as_of": "2026-08-10",
+        "status": "observed",
+        "interpretation": "公开市场风险承接相对偏弱"
+      },
+      {
+        "id": "if_realized_vol_20d",
+        "name": "实现波动",
+        "pillar": "volatility",
+        "value": 0.189792,
+        "display_value": "18.98%",
+        "percentile": 0.9234,
+        "direction": "下降",
+        "confidence": "低",
+        "sample_size": 222,
+        "lookback": "20日均值",
+        "as_of": "2026-08-10",
+        "status": "observed",
+        "interpretation": "风险定价波动相对偏高"
+      },
+      {
+        "id": "if_liquidity_activity_20d",
+        "name": "流动性活跃度",
+        "pillar": "liquidity",
+        "value": 0.575647,
+        "display_value": "0.58x",
+        "percentile": 0.0099,
+        "direction": "持平",
+        "confidence": "低",
+        "sample_size": 203,
+        "lookback": "20日/60日中位数",
+        "as_of": "2026-08-10",
+        "status": "observed",
+        "interpretation": "期货成交活跃度相对偏低"
+      },
+      {
+        "id": "if_basis_5d",
+        "name": "期现基差",
+        "pillar": "basis",
+        "value": -0.004059,
+        "display_value": "-0.41%",
+        "percentile": 0.6034,
+        "direction": "上升",
+        "confidence": "低",
+        "sample_size": 237,
+        "lookback": "5日均值",
+        "as_of": "2026-08-10",
+        "status": "observed",
+        "interpretation": "观察基差相对偏强"
+      },
+      {
+        "id": "if_crowding_proxy_20d",
+        "name": "拥挤度代理",
+        "pillar": "crowding",
+        "value": 0.437184,
+        "display_value": "0.44",
+        "percentile": 0.1584,
+        "direction": "上升",
+        "confidence": "低",
+        "sample_size": 202,
+        "lookback": "20日均值",
+        "as_of": "2026-08-10",
+        "status": "observed",
+        "interpretation": "价格、成交与持仓同步异常程度偏低"
+      }
+    ],
+    "transition": {
+      "current": "收缩",
+      "method": "历史一日状态转移频率",
+      "sample_size": 77,
+      "confidence": "低",
+      "warning": "当前历史窗口约一年，转移频率是描述统计，不是稳定预测概率。",
+      "probabilities": [
+        {
+          "regime": "收缩",
+          "probability": 0.8052
+        },
+        {
+          "regime": "修复",
+          "probability": 0.0649
+        },
+        {
+          "regime": "压力",
+          "probability": 0.0519
+        },
+        {
+          "regime": "均衡",
+          "probability": 0.039
+        },
+        {
+          "regime": "扩张",
+          "probability": 0.039
+        }
+      ]
+    }
+  },
+  "industry_mapping": {
+    "status": "ready",
+    "as_of": "2026-08-11",
+    "updated_at": "2026-08-12T17:43:01.597975+08:00",
+    "coverage": {
+      "observed": 7,
+      "required": 7
+    },
+    "definitions": {
+      "return_20d": "当前收盘价 / 20个交易日前收盘价 - 1",
+      "volatility_20d": "最近20个日收益率样本标准差，按252交易日年化",
+      "relative_strength": "本指数20日收益 - 沪深300同期20日收益",
+      "valuation": "官方指数factsheet或指数官网披露的滚动PE与PB"
+    },
+    "decision_boundary": "已按共同交易日接入7组代理；相对强弱均相对沪深300。公开市场代理只用于风险偏好与估值参照，不替代一级项目订单、融资与退出证据。",
+    "rows": [
+      {
+        "id": "IF_CSI300",
+        "name": "沪深300 / IF",
+        "role": "大盘风险定价锚",
+        "index_code": "000300",
+        "as_of": "2026-08-11",
+        "return_20d": -0.027668,
+        "volatility_20d": 0.252969,
+        "relative_strength": 0.0,
+        "pe_ttm": 14.36,
+        "pb": 1.41,
+        "valuation_as_of": "2026-07-31",
+        "price_source": "中证指数公司官方日线",
+        "valuation_source": "中证指数公司官方factsheet",
+        "proxy_note": null,
+        "status": "observed",
+        "confidence": "中",
+        "valuation": "PE 14.4x / PB 1.4x",
+        "source": "中证指数公司官方日线；中证指数公司官方factsheet",
+        "gap": null
+      },
+      {
+        "id": "IC_CSI500",
+        "name": "中证500 / IC",
+        "role": "中盘风险偏好",
+        "index_code": "000905",
+        "as_of": "2026-08-11",
+        "return_20d": -0.037265,
+        "volatility_20d": 0.414526,
+        "relative_strength": -0.009597,
+        "pe_ttm": 26.78,
+        "pb": 2.15,
+        "valuation_as_of": "2026-07-31",
+        "price_source": "中证指数公司官方日线",
+        "valuation_source": "中证指数公司官方factsheet",
+        "proxy_note": null,
+        "status": "observed",
+        "confidence": "中",
+        "valuation": "PE 26.8x / PB 2.1x",
+        "source": "中证指数公司官方日线；中证指数公司官方factsheet",
+        "gap": null
+      },
+      {
+        "id": "IM_CSI1000",
+        "name": "中证1000 / IM",
+        "role": "小盘风险偏好",
+        "index_code": "000852",
+        "as_of": "2026-08-11",
+        "return_20d": -0.028652,
+        "volatility_20d": 0.423548,
+        "relative_strength": -0.000984,
+        "pe_ttm": 29.95,
+        "pb": 2.17,
+        "valuation_as_of": "2026-07-31",
+        "price_source": "中证指数公司官方日线",
+        "valuation_source": "中证指数公司官方factsheet",
+        "proxy_note": null,
+        "status": "observed",
+        "confidence": "中",
+        "valuation": "PE 29.9x / PB 2.2x",
+        "source": "中证指数公司官方日线；中证指数公司官方factsheet",
+        "gap": null
+      },
+      {
+        "id": "STAR50",
+        "name": "科创50",
+        "role": "硬科技上市可比",
+        "index_code": "000688",
+        "as_of": "2026-08-11",
+        "return_20d": -0.149388,
+        "volatility_20d": 0.694969,
+        "relative_strength": -0.12172,
+        "pe_ttm": 77.94,
+        "pb": 7.45,
+        "valuation_as_of": "2026-07-31",
+        "price_source": "中证指数公司官方日线",
+        "valuation_source": "中证指数公司官方factsheet",
+        "proxy_note": null,
+        "status": "observed",
+        "confidence": "中",
+        "valuation": "PE 77.9x / PB 7.5x",
+        "source": "中证指数公司官方日线；中证指数公司官方factsheet",
+        "gap": null
+      },
+      {
+        "id": "CHINEXT",
+        "name": "创业板指",
+        "role": "成长资产风险偏好",
+        "index_code": "399006",
+        "as_of": "2026-08-11",
+        "return_20d": -0.078413,
+        "volatility_20d": 0.582369,
+        "relative_strength": -0.050745,
+        "pe_ttm": 39.9669,
+        "pb": 6.07,
+        "valuation_as_of": "2026-08-12",
+        "price_source": "腾讯证券公开指数日线",
+        "valuation_source": "国证指数官网",
+        "proxy_note": null,
+        "status": "observed",
+        "confidence": "中",
+        "valuation": "PE 40.0x / PB 6.1x",
+        "source": "腾讯证券公开指数日线；国证指数官网",
+        "gap": null
+      },
+      {
+        "id": "SEMICONDUCTOR",
+        "name": "半导体篮子",
+        "role": "产业链估值与波动",
+        "index_code": "931865",
+        "as_of": "2026-08-11",
+        "return_20d": -0.145703,
+        "volatility_20d": 0.927007,
+        "relative_strength": -0.118035,
+        "pe_ttm": 129.11,
+        "pb": 12.39,
+        "valuation_as_of": "2026-07-31",
+        "price_source": "中证指数公司官方日线",
+        "valuation_source": "中证指数公司官方factsheet",
+        "proxy_note": null,
+        "status": "observed",
+        "confidence": "中",
+        "valuation": "PE 129.1x / PB 12.4x",
+        "source": "中证指数公司官方日线；中证指数公司官方factsheet",
+        "gap": null
+      },
+      {
+        "id": "AI_SECURITY",
+        "name": "AI安全篮子",
+        "role": "AI安全公开市场代理",
+        "index_code": "399994",
+        "as_of": "2026-08-11",
+        "return_20d": 0.015676,
+        "volatility_20d": 0.420182,
+        "relative_strength": 0.043344,
+        "pe_ttm": 36.33,
+        "pb": 3.43,
+        "valuation_as_of": "2026-07-31",
+        "price_source": "中证指数公司官方日线",
+        "valuation_source": "中证指数公司官方factsheet",
+        "proxy_note": "采用中证信息安全主题指数；覆盖信息安全技术、产品与服务，不等同于纯AI安全收入篮子。",
+        "status": "observed",
+        "confidence": "中",
+        "valuation": "PE 36.3x / PB 3.4x",
+        "source": "中证指数公司官方日线；中证指数公司官方factsheet",
+        "gap": "采用中证信息安全主题指数；覆盖信息安全技术、产品与服务，不等同于纯AI安全收入篮子。"
+      }
+    ]
+  },
+  "private_mapping": {
+    "status": "not_published",
+    "public_view": true,
+    "public_proxies": [
+      {
+        "id": "financing_environment_proxy",
+        "name": "融资环境代理",
+        "state": "偏紧",
+        "display_value": "33.2%分位",
+        "metric": "IF风险偏好历史分位",
+        "detail": "流动性活跃度 1.0%分位；用于提示公开市场融资环境，不是项目融资成功率。",
+        "as_of": "2026-08-10",
+        "status": "observed"
+      },
+      {
+        "id": "valuation_environment_proxy",
+        "name": "估值环境代理",
+        "state": "高估值承压",
+        "display_value": "PE 59.0x",
+        "metric": "科创50/创业板/半导体/信息安全PE中位",
+        "detail": "PB中位 6.8x；20日相对沪深300中位 -8.4%，不是一级项目估值变化率。",
+        "as_of": "2026-08-11",
+        "status": "observed"
+      },
+      {
+        "id": "exit_window_proxy",
+        "name": "退出窗口代理",
+        "state": "承压",
+        "display_value": "-11.4%",
+        "metric": "科创50与创业板20日平均收益",
+        "detail": "相对沪深300平均 -8.6%；用于观察成长资产窗口，不是项目退出概率。",
+        "as_of": "2026-08-11",
+        "status": "observed"
+      },
+      {
+        "id": "impairment_pressure_proxy",
+        "name": "减值压力代理",
+        "state": "偏高",
+        "display_value": "92.3%分位",
+        "metric": "IF实现波动历史分位",
+        "detail": "六类非大盘代理20日年化波动中位 50.3%；用于触发复核，不是实际减值发生率。",
+        "as_of": "2026-08-10",
+        "status": "observed"
+      }
+    ],
+    "join_semantics": "内部项目、事件和结果标签仅保留在本机受控研究环境，不进入公开站点或公开仓库。",
+    "warning": "公开快照不包含项目明细、事件记录、组合统计、内部主键或来源记录。"
+  },
+  "portfolio_actions": {
+    "status": "scope_level_only",
+    "review_count": 1,
+    "items": [
+      {
+        "id": "valuation_discipline",
+        "title": "复核新项目估值与保护条款",
+        "status": "review",
+        "priority": "高",
+        "scope": "在审或待交割项目",
+        "owner_role": "项目负责人",
+        "due_days": 5,
+        "evidence_signal_ids": [
+          "if_realized_vol_20d",
+          "market_regime"
+        ],
+        "required_evidence": [
+          "最新可比公司估值",
+          "下行情景退出倍数",
+          "反稀释与分期交割条款"
+        ],
+        "decision_boundary": "只触发人工复核，不自动否决项目、调整估值或执行退出。"
+      },
+      {
+        "id": "financing_runway",
+        "title": "复核组合融资储备",
+        "status": "monitor",
+        "priority": "观察",
+        "scope": "未来18个月存在融资需求的项目",
+        "owner_role": "投后负责人",
+        "due_days": 10,
+        "evidence_signal_ids": [
+          "if_risk_appetite_20d",
+          "regime_transition"
+        ],
+        "required_evidence": [
+          "现金跑道月数",
+          "下一轮融资计划",
+          "成本压缩预案"
+        ],
+        "decision_boundary": "只触发人工复核，不自动否决项目、调整估值或执行退出。"
+      },
+      {
+        "id": "exit_window",
+        "title": "复核退出窗口与准备度",
+        "status": "monitor",
+        "priority": "观察",
+        "scope": "拟IPO、并购或老股转让项目",
+        "owner_role": "退出负责人",
+        "due_days": 7,
+        "evidence_signal_ids": [
+          "if_risk_appetite_20d",
+          "if_realized_vol_20d"
+        ],
+        "required_evidence": [
+          "申报准备度",
+          "可比发行与并购案例",
+          "基准与备选退出路径"
+        ],
+        "decision_boundary": "只触发人工复核，不自动否决项目、调整估值或执行退出。"
+      },
+      {
+        "id": "risk_terms",
+        "title": "复核风险条款与集中暴露",
+        "status": "monitor",
+        "priority": "观察",
+        "scope": "高估值、单一客户或高融资依赖项目",
+        "owner_role": "风控与法务",
+        "due_days": 7,
+        "evidence_signal_ids": [
+          "if_crowding_proxy_20d",
+          "if_realized_vol_20d"
+        ],
+        "required_evidence": [
+          "清算优先权",
+          "回购与对赌边界",
+          "客户和融资集中度"
+        ],
+        "decision_boundary": "只触发人工复核，不自动否决项目、调整估值或执行退出。"
+      }
+    ],
+    "warning": "公开版仅展示通用复核范围，不包含具体项目匹配结果。"
+  },
+  "data_gaps": [
+    {
+      "id": "market_history",
+      "label": "IF长期历史",
+      "status": "partial",
+      "detail": "当前约一年；目标至少覆盖一个完整市场周期并逐段标记制度变化"
+    },
+    {
+      "id": "cross_index",
+      "label": "IC/IM与行业篮子",
+      "status": "ready",
+      "detail": "7组代理行情、波动、相对强弱已接入"
+    },
+    {
+      "id": "valuation",
+      "label": "行业估值与利率信用",
+      "status": "partial",
+      "detail": "指数PE/PB已接入；利率与信用仍待接入"
+    },
+    {
+      "id": "options_l2",
+      "label": "期权与Level-2",
+      "status": "pending",
+      "detail": "只有在一分钟/L1提供增量价值后再采购"
+    },
+    {
+      "id": "private_events",
+      "label": "内部项目事件与结果",
+      "status": "pending",
+      "detail": "匿名化、point-in-time、带来源记录"
+    }
+  ],
+  "disclaimer": "本系统只提供资本市场情报、风险状态和复核线索，不构成交易信号、项目评级或自动化投决。 公开版仅含字段白名单内的聚合快照。"
+}
