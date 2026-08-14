@@ -3,7 +3,7 @@
   "status": "public_safe_snapshot",
   "public_view": true,
   "title": "一级市场资本情报系统",
-  "updated_at": "2026-08-14T08:26:56.589201+08:00",
+  "updated_at": "2026-08-14T08:27:44.091598+08:00",
   "purpose": "公开市场状态识别、一级市场映射与人工复核工作流",
   "not_a_trading_model": true,
   "market_state": {
@@ -119,7 +119,7 @@
   "industry_mapping": {
     "status": "ready",
     "as_of": "2026-08-13",
-    "updated_at": "2026-08-14T08:26:56.312962+08:00",
+    "updated_at": "2026-08-14T08:27:42.807974+08:00",
     "coverage": {
       "observed": 7,
       "required": 7
