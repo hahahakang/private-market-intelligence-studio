@@ -1,11 +1,281 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "public_safe_snapshot",
   "public_view": true,
-  "title": "一级市场资本情报系统",
-  "updated_at": "2026-08-14T08:29:45.126877+08:00",
-  "purpose": "公开市场状态识别、一级市场映射与人工复核工作流",
+  "title": "开天眼 V1｜一级市场资本情报系统",
+  "updated_at": "2026-08-15T22:14:33.385284+08:00",
+  "purpose": "公开市场状态识别、一级市场映射、每日研究摘要与人工复核工作流",
   "not_a_trading_model": true,
+  "daily_briefing": {
+    "status": "market_evidence_only",
+    "edition": "V1.0",
+    "as_of": "2026-08-13",
+    "headline": "收缩状态｜风险偏好上升｜1项人工复核",
+    "reading_minutes": 4,
+    "coverage": {
+      "investor_models": 10,
+      "verified_daily_investor_records": 0,
+      "market_signals": 5,
+      "industry_proxies": 7
+    },
+    "executive_summary": [
+      {
+        "id": "market_regime",
+        "title": "市场状态：收缩",
+        "detail": "风险偏好位于历史31.0%分位，实现波动位于89.7%分位。",
+        "evidence_type": "audited_market_data",
+        "evidence_ids": [
+          "if_risk_appetite_20d",
+          "if_realized_vol_20d",
+          "market_regime"
+        ]
+      },
+      {
+        "id": "sector_dispersion",
+        "title": "相对强弱：AI安全篮子领先",
+        "detail": "AI安全篮子较沪深300的20日相对强弱为+6.2%；科创50为-2.9%。",
+        "evidence_type": "audited_market_data",
+        "evidence_ids": [
+          "AI_SECURITY",
+          "STAR50"
+        ]
+      },
+      {
+        "id": "review_queue",
+        "title": "组合动作：1项规则触发复核",
+        "detail": "当前只生成人工复核范围；内部项目主表未接入，不点名项目、不自动调估值或执行投决。",
+        "evidence_type": "rule_output",
+        "evidence_ids": [
+          "valuation_discipline"
+        ]
+      }
+    ],
+    "market_evidence": [
+      {
+        "id": "if_risk_appetite_20d",
+        "name": "风险偏好",
+        "display_value": "0.24",
+        "percentile": 0.3103,
+        "direction": "上升",
+        "interpretation": "公开市场风险承接相对偏弱",
+        "as_of": "2026-08-13",
+        "evidence_type": "audited_market_data"
+      },
+      {
+        "id": "if_realized_vol_20d",
+        "name": "实现波动",
+        "display_value": "17.16%",
+        "percentile": 0.8969,
+        "direction": "下降",
+        "interpretation": "风险定价波动相对偏高",
+        "as_of": "2026-08-13",
+        "evidence_type": "audited_market_data"
+      },
+      {
+        "id": "if_liquidity_activity_20d",
+        "name": "流动性活跃度",
+        "display_value": "0.56x",
+        "percentile": 0.0049,
+        "direction": "下降",
+        "interpretation": "期货成交活跃度相对偏低",
+        "as_of": "2026-08-13",
+        "evidence_type": "audited_market_data"
+      },
+      {
+        "id": "if_basis_5d",
+        "name": "期现基差",
+        "display_value": "-0.36%",
+        "percentile": 0.6513,
+        "direction": "上升",
+        "interpretation": "观察基差相对偏强",
+        "as_of": "2026-08-13",
+        "evidence_type": "audited_market_data"
+      },
+      {
+        "id": "if_crowding_proxy_20d",
+        "name": "拥挤度代理",
+        "display_value": "0.39",
+        "percentile": 0.0146,
+        "direction": "下降",
+        "interpretation": "价格、成交与持仓同步异常程度偏低",
+        "as_of": "2026-08-13",
+        "evidence_type": "audited_market_data"
+      }
+    ],
+    "debate": {
+      "status": "framework_inference",
+      "positions": [
+        {
+          "id": "option_value",
+          "label": "非共识与期权价值视角",
+          "assessment": "优先验证逆周期议价机会，但不得把公开市场回撤直接等同于项目质量改善。",
+          "question": "哪些技术或供给瓶颈的长期价值未被当前融资条件充分反映？",
+          "evidence_type": "framework_inference",
+          "evidence_ids": [
+            "if_risk_appetite_20d",
+            "if_liquidity_activity_20d"
+          ]
+        },
+        {
+          "id": "downside_control",
+          "label": "周期与安全边际视角",
+          "assessment": "融资与估值条件可能更脆弱，应提高现金跑道、保护条款和退出备选路径的复核频率。",
+          "question": "在更保守的融资、估值和退出情景下，项目还能否存活并保留回报空间？",
+          "evidence_type": "framework_inference",
+          "evidence_ids": [
+            "if_realized_vol_20d",
+            "if_basis_5d",
+            "if_crowding_proxy_20d"
+          ]
+        },
+        {
+          "id": "operating_discipline",
+          "label": "组合纪律综合",
+          "assessment": "保留1项人工复核，先补项目证据，再调整判断。",
+          "question": "哪个可观测证据将在未来30天内证实或证伪当前投资假设？",
+          "evidence_type": "framework_inference",
+          "evidence_ids": [
+            "valuation_discipline"
+          ]
+        }
+      ],
+      "boundary": "这些内容是系统根据通用思维框架生成的研究问题，不代表任何投资人的当日发言或实时立场。"
+    },
+    "investor_lenses": [
+      {
+        "id": "vinod_khosla",
+        "name": "Vinod Khosla",
+        "region": "美国",
+        "framework": "不对称回报与技术期权",
+        "decision_question": "若技术路线成立，上行空间是否足以覆盖大部分早期失败？",
+        "time_horizon": "10年以上",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      },
+      {
+        "id": "peter_thiel",
+        "name": "Peter Thiel",
+        "region": "美国",
+        "framework": "反共识与结构性垄断",
+        "decision_question": "哪个尚未成为共识的判断，能为公司带来持久的议价权？",
+        "time_horizon": "7至10年",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      },
+      {
+        "id": "howard_marks",
+        "name": "Howard Marks",
+        "region": "美国",
+        "framework": "周期位置与风险控制",
+        "decision_question": "当前价格反映了多少乐观预期，失败情景下的永久性损失是什么？",
+        "time_horizon": "完整市场周期",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      },
+      {
+        "id": "ray_dalio",
+        "name": "Ray Dalio",
+        "region": "美国",
+        "framework": "宏观周期与现金流压力测试",
+        "decision_question": "增长、通胀、流动性与政策变化将如何传导到融资和退出？",
+        "time_horizon": "3至10年",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      },
+      {
+        "id": "warren_buffett",
+        "name": "Warren Buffett",
+        "region": "美国",
+        "framework": "商业质量与安全边际",
+        "decision_question": "公司是否能在不持续依赖外部融资的情况下复利，且购买价格是否留有余量？",
+        "time_horizon": "10年以上",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      },
+      {
+        "id": "stanley_druckenmiller",
+        "name": "Stanley Druckenmiller",
+        "region": "美国",
+        "framework": "宏观驱动与微观验证",
+        "decision_question": "哪个可观测变量最早证伪当前判断，仓位暴露与确信度是否匹配？",
+        "time_horizon": "1至5年",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      },
+      {
+        "id": "cathie_wood",
+        "name": "Cathie Wood",
+        "region": "美国",
+        "framework": "技术扩散与成本曲线",
+        "decision_question": "技术成本下降、性能提升和渗透率之间是否形成可量化的正反馈？",
+        "time_horizon": "5至10年",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      },
+      {
+        "id": "bill_gurley",
+        "name": "Bill Gurley",
+        "region": "美国",
+        "framework": "平台结构与单位经济",
+        "decision_question": "网络效应是否反映在供需密度、留存和单位经济上，还是仅体现为补贴驱动的规模？",
+        "time_horizon": "5至10年",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      },
+      {
+        "id": "neil_shen",
+        "name": "沈南鹏",
+        "region": "中国",
+        "framework": "高增长赛道与组织执行",
+        "decision_question": "市场成长、团队执行和资本效率能否同时穿越融资周期？",
+        "time_horizon": "5至10年",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      },
+      {
+        "id": "li_lu",
+        "name": "李录",
+        "region": "中国/美国",
+        "framework": "长期价值与能力圈",
+        "decision_question": "是否真正理解企业的护城河、管理者资本配置和长期现金流？",
+        "time_horizon": "10年以上",
+        "status": "framework_only",
+        "evidence_type": "framework_seed",
+        "daily_source_status": "not_connected"
+      }
+    ],
+    "watch_items": [
+      {
+        "id": "valuation_discipline",
+        "title": "复核新项目估值与保护条款",
+        "priority": "高",
+        "scope": "在审或待交割项目",
+        "owner_role": "项目负责人",
+        "due_days": 5,
+        "evidence_signal_ids": [
+          "if_realized_vol_20d",
+          "market_regime"
+        ],
+        "boundary": "只触发人工复核，不自动否决项目、调整估值或执行退出。"
+      }
+    ],
+    "source_readiness": {
+      "status": "not_connected",
+      "verified_daily_records": 0,
+      "admission_rule": "只有保留发布时间、事件时间、采集时间、公开原文和来源类型的记录，才能进入当日观点层。",
+      "boundary": "V1尚未接入投资人当日公开原文，因此不展示当日引语、立场变化或人物结论。"
+    },
+    "boundary": "日报只用于研究会议和人工复核，不构成交易信号、项目评级或自动化投决。"
+  },
   "market_state": {
     "as_of": "2026-08-13",
     "regime": "收缩",
@@ -118,8 +388,8 @@
   },
   "industry_mapping": {
     "status": "ready",
-    "as_of": "2026-08-13",
-    "updated_at": "2026-08-14T08:29:43.772968+08:00",
+    "as_of": "2026-08-14",
+    "updated_at": "2026-08-15T22:14:33.122358+08:00",
     "coverage": {
       "observed": 7,
       "required": 7
@@ -137,9 +407,9 @@
         "name": "沪深300 / IF",
         "role": "大盘风险定价锚",
         "index_code": "000300",
-        "as_of": "2026-08-13",
-        "return_20d": -0.007339,
-        "volatility_20d": 0.246426,
+        "as_of": "2026-08-14",
+        "return_20d": 0.0302,
+        "volatility_20d": 0.207038,
         "relative_strength": 0.0,
         "pe_ttm": 14.36,
         "pb": 1.41,
@@ -158,10 +428,10 @@
         "name": "中证500 / IC",
         "role": "中盘风险偏好",
         "index_code": "000905",
-        "as_of": "2026-08-13",
-        "return_20d": 0.001599,
-        "volatility_20d": 0.40543,
-        "relative_strength": 0.008938,
+        "as_of": "2026-08-14",
+        "return_20d": 0.063426,
+        "volatility_20d": 0.347412,
+        "relative_strength": 0.033226,
         "pe_ttm": 26.78,
         "pb": 2.15,
         "valuation_as_of": "2026-07-31",
@@ -179,10 +449,10 @@
         "name": "中证1000 / IM",
         "role": "小盘风险偏好",
         "index_code": "000852",
-        "as_of": "2026-08-13",
-        "return_20d": 0.011024,
-        "volatility_20d": 0.415865,
-        "relative_strength": 0.018363,
+        "as_of": "2026-08-14",
+        "return_20d": 0.083959,
+        "volatility_20d": 0.346403,
+        "relative_strength": 0.053759,
         "pe_ttm": 29.95,
         "pb": 2.17,
         "valuation_as_of": "2026-07-31",
@@ -200,10 +470,10 @@
         "name": "科创50",
         "role": "硬科技上市可比",
         "index_code": "000688",
-        "as_of": "2026-08-13",
-        "return_20d": -0.069918,
-        "volatility_20d": 0.673911,
-        "relative_strength": -0.062579,
+        "as_of": "2026-08-14",
+        "return_20d": 0.001329,
+        "volatility_20d": 0.623545,
+        "relative_strength": -0.028871,
         "pe_ttm": 77.94,
         "pb": 7.45,
         "valuation_as_of": "2026-07-31",
@@ -221,19 +491,19 @@
         "name": "创业板指",
         "role": "成长资产风险偏好",
         "index_code": "399006",
-        "as_of": "2026-08-13",
-        "return_20d": -0.028821,
-        "volatility_20d": 0.576051,
-        "relative_strength": -0.021482,
-        "pe_ttm": 40.3899,
-        "pb": 6.13,
-        "valuation_as_of": "2026-08-14",
+        "as_of": "2026-08-14",
+        "return_20d": 0.057653,
+        "volatility_20d": 0.512916,
+        "relative_strength": 0.027453,
+        "pe_ttm": 40.7877,
+        "pb": 6.2,
+        "valuation_as_of": "2026-08-15",
         "price_source": "腾讯证券公开指数日线",
         "valuation_source": "国证指数官网",
         "proxy_note": null,
         "status": "observed",
         "confidence": "中",
-        "valuation": "PE 40.4x / PB 6.1x",
+        "valuation": "PE 40.8x / PB 6.2x",
         "source": "腾讯证券公开指数日线；国证指数官网",
         "gap": null
       },
@@ -242,10 +512,10 @@
         "name": "半导体篮子",
         "role": "产业链估值与波动",
         "index_code": "931865",
-        "as_of": "2026-08-13",
-        "return_20d": -0.035177,
-        "volatility_20d": 0.886762,
-        "relative_strength": -0.027838,
+        "as_of": "2026-08-14",
+        "return_20d": 0.027328,
+        "volatility_20d": 0.859599,
+        "relative_strength": -0.002872,
         "pe_ttm": 129.11,
         "pb": 12.39,
         "valuation_as_of": "2026-07-31",
@@ -263,10 +533,10 @@
         "name": "AI安全篮子",
         "role": "AI安全公开市场代理",
         "index_code": "399994",
-        "as_of": "2026-08-13",
-        "return_20d": 0.01402,
-        "volatility_20d": 0.41843,
-        "relative_strength": 0.021359,
+        "as_of": "2026-08-14",
+        "return_20d": 0.092147,
+        "volatility_20d": 0.35599,
+        "relative_strength": 0.061947,
         "pe_ttm": 36.33,
         "pb": 3.43,
         "valuation_as_of": "2026-07-31",
@@ -299,20 +569,20 @@
         "id": "valuation_environment_proxy",
         "name": "估值环境代理",
         "state": "估值参照",
-        "display_value": "PE 59.2x",
+        "display_value": "PE 59.4x",
         "metric": "科创50/创业板/半导体/信息安全PE中位",
-        "detail": "PB中位 6.8x；20日相对沪深300中位 -2.5%，不是一级项目估值变化率。",
-        "as_of": "2026-08-13",
+        "detail": "PB中位 6.8x；20日相对沪深300中位 +1.2%，不是一级项目估值变化率。",
+        "as_of": "2026-08-14",
         "status": "observed"
       },
       {
         "id": "exit_window_proxy",
         "name": "退出窗口代理",
         "state": "中性",
-        "display_value": "-4.9%",
+        "display_value": "+2.9%",
         "metric": "科创50与创业板20日平均收益",
-        "detail": "相对沪深300平均 -4.2%；用于观察成长资产窗口，不是项目退出概率。",
-        "as_of": "2026-08-13",
+        "detail": "相对沪深300平均 -0.1%；用于观察成长资产窗口，不是项目退出概率。",
+        "as_of": "2026-08-14",
         "status": "observed"
       },
       {
@@ -321,7 +591,7 @@
         "state": "偏高",
         "display_value": "89.7%分位",
         "metric": "IF实现波动历史分位",
-        "detail": "六类非大盘代理20日年化波动中位 49.7%；用于触发复核，不是实际减值发生率。",
+        "detail": "六类非大盘代理20日年化波动中位 43.4%；用于触发复核，不是实际减值发生率。",
         "as_of": "2026-08-13",
         "status": "observed"
       }
@@ -430,6 +700,12 @@
       "label": "行业估值与利率信用",
       "status": "partial",
       "detail": "指数PE/PB已接入；利率与信用仍待接入"
+    },
+    {
+      "id": "investor_public_sources",
+      "label": "投资人当日公开原文",
+      "status": "pending",
+      "detail": "10位思维模型已建立；当日观点0条，尚未接入可核验原文记录"
     },
     {
       "id": "options_l2",
