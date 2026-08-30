@@ -3,7 +3,7 @@
   "status": "public_safe_snapshot",
   "public_view": true,
   "title": "开天眼 V1｜一级市场资本情报系统",
-  "updated_at": "2026-08-29T18:35:34.452769+08:00",
+  "updated_at": "2026-08-30T18:35:20.796976+08:00",
   "purpose": "公开市场状态识别、一级市场映射、每日研究摘要与人工复核工作流",
   "not_a_trading_model": true,
   "daily_briefing": {
@@ -389,7 +389,7 @@
   "industry_mapping": {
     "status": "ready",
     "as_of": "2026-08-28",
-    "updated_at": "2026-08-29T18:35:33.074830+08:00",
+    "updated_at": "2026-08-30T18:35:19.654510+08:00",
     "coverage": {
       "observed": 7,
       "required": 7
@@ -497,7 +497,7 @@
         "relative_strength": 0.019482,
         "pe_ttm": 38.6031,
         "pb": 5.72,
-        "valuation_as_of": "2026-08-29",
+        "valuation_as_of": "2026-08-30",
         "price_source": "腾讯证券公开指数日线",
         "valuation_source": "国证指数官网",
         "proxy_note": null,
