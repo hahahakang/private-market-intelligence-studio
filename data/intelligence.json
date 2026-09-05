@@ -3,7 +3,7 @@
   "status": "public_safe_snapshot",
   "public_view": true,
   "title": "开天眼 V1｜一级市场资本情报系统",
-  "updated_at": "2026-09-04T18:35:28.972043+08:00",
+  "updated_at": "2026-09-05T18:41:24.039118+08:00",
   "purpose": "公开市场状态识别、一级市场映射、每日研究摘要与人工复核工作流",
   "not_a_trading_model": true,
   "daily_briefing": {
@@ -389,7 +389,7 @@
   "industry_mapping": {
     "status": "ready",
     "as_of": "2026-09-04",
-    "updated_at": "2026-09-04T18:35:27.638855+08:00",
+    "updated_at": "2026-09-05T18:41:22.811369+08:00",
     "coverage": {
       "observed": 7,
       "required": 7
@@ -495,15 +495,15 @@
         "return_20d": -0.07762,
         "volatility_20d": 0.322637,
         "relative_strength": -0.046436,
-        "pe_ttm": 33.3501,
-        "pb": 5.53,
-        "valuation_as_of": "2026-09-04",
+        "pe_ttm": 33.0268,
+        "pb": 5.48,
+        "valuation_as_of": "2026-09-05",
         "price_source": "腾讯证券公开指数日线",
         "valuation_source": "国证指数官网",
         "proxy_note": null,
         "status": "observed",
         "confidence": "中",
-        "valuation": "PE 33.4x / PB 5.5x",
+        "valuation": "PE 33.0x / PB 5.5x",
         "source": "腾讯证券公开指数日线；国证指数官网",
         "gap": null
       },
@@ -571,7 +571,7 @@
         "state": "高估值承压",
         "display_value": "PE 58.5x",
         "metric": "科创50/创业板/半导体/信息安全PE中位",
-        "detail": "PB中位 6.9x；20日相对沪深300中位 -5.5%，不是一级项目估值变化率。",
+        "detail": "PB中位 6.8x；20日相对沪深300中位 -5.5%，不是一级项目估值变化率。",
         "as_of": "2026-09-04",
         "status": "observed"
       },
